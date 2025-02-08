@@ -1,0 +1,12 @@
+{
+    "name": "codedusting/taskify",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Code Dusting",
+            "email": "codedusting@gmail.com"
+        }
+    ],
+    "require": {}
+}
