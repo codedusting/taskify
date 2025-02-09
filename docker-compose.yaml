@@ -20,18 +20,17 @@ services:
 
   # mysql [database]
   db:
-    image: mysql:8.4
+    image: postgres:16.6
     container_name: taskify_database
     volumes:
-      - mysqldata:/var/lib/mysql
+      - pgdata:/var/lib/postgresql/data
     ports:
-      - "3306:3306"
+      - "5432:5432"
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: taskify
-      MYSQL_USER: taskify
-      MYSQL_PASSWORD: taskify
+      POSTGRES_DB: taskify
+      POSTGRES_USER: taskify
+      POSTGRES_PASSWORD: taskify
 
 volumes:
-  mysqldata:
+  pgdata:
