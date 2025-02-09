@@ -1,3 +1,5 @@
 <?php
 
-dd("routes.php");
+global $router;
+
+$router->get("/", "index.php");

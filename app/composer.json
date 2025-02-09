@@ -8,5 +8,8 @@
             "email": "codedusting@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "imagekit/imagekit": "^4.0"
+    }
 }

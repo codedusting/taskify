@@ -2,18 +2,28 @@
 
 namespace Core;
 
-use JetBrains\PhpStorm\NoReturn;
-
 class Router
 {
-    private $routes = [];
+    private array $routes = [];
 
-    public function __construct()
+    public function routeTo(string $uri, string $method): mixed
     {
-        dd("Router.php");
+        foreach ($this->routes as $route) {
+            if ($route["uri"] === $uri && $route["method"] === strtolower($method)) {
+                return require basePath("http/controllers/".$route["controller"]);
+            }
+        }
+        abort(404);
     }
 
-    #[NoReturn] public function routeTo(string $uri, string $method): void {
-        dd("uri: " . $uri . " | method: ". $method);
+    public function get(string $uri, string $controller): static
+    {
+        return $this->add($uri, $controller, "get");
+    }
+
+    public function add(string $uri, string $controller, string $method): static
+    {
+        $this->routes[] = compact("uri", "controller", "method");
+        return $this;
     }
 }
