@@ -1,3 +1,5 @@
 .idea/
 nginx/certs
 app/vendor
+.env
+app/.env

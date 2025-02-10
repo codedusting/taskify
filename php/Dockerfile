@@ -1,6 +1,8 @@
 FROM php:8.4.3-fpm-alpine
 
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apk add --no-cache postgresql-dev
+
+RUN docker-php-ext-install pdo pgsql pdo_pgsql
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
