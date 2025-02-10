@@ -1,5 +1,6 @@
 <?php
 
+use Core\App;
 use Core\Container;
 use Core\Database;
 
@@ -16,3 +17,5 @@ $container->bind("Core\Database", function () {
 
     return new Database($host, $port, $dbname, $user, $password);
 });
+
+App::setContainer($container);

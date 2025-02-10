@@ -10,7 +10,7 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route["uri"] === $uri && $route["method"] === strtolower($method)) {
-                return require basePath("http/controllers/".$route["controller"]);
+                return require basePath("internal/controllers/".$route["controller"]);
             }
         }
         abort(404);
@@ -25,5 +25,10 @@ class Router
     {
         $this->routes[] = compact("uri", "controller", "method");
         return $this;
+    }
+
+    public function post(string $uri, string $controller): static
+    {
+        return $this->add($uri, $controller, "post");
     }
 }

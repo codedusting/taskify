@@ -1,5 +1,5 @@
-<?php require("components/meta.php"); ?>
-<?php require("components/header.php"); ?>
+<?php require(basePath("internal/views/components/meta.view.php")); ?>
+<?php require(basePath("internal/views/components/header.view.php")); ?>
 <main class="flex-1 bg-gray-50">
     <section class="px-4 bg-white text-black border-b border-solid border-b-gray-200 py-4">
         <div class="container mx-auto px-4">
@@ -17,14 +17,15 @@
             <?php endif; ?>
             <?php foreach ($tasks as $task): ?>
                 <div class="flex flex-col sm:flex-row items-center justify-between w-full border border-solid border-[#ddd] p-4 rounded">
-                    <div class="flex items-center justify-start gap-4 w-full mb-4">
-                        <p><?= $task["id"] ?></p>
-                        <div class="flex flex-col items-start justify-start gap-1">
-                            <p class="text-xl font-bold"><?= $task["title"] ?></p>
-                            <p class="text-gray-700"><?= $task["description"] ?></p>
+                    <div class="flex items-center justify-start gap-4 w-full mb-4 sm:mb-0 mr-4">
+                        <img src="<?= $task["thumbnailUrl"] ?>" alt="<?= $task["title"] ?> Thumbnail" width="64"
+                             height="64" class="border border-solid border-gray-900 rounded object-cover">
+                        <div class="flex flex-col items-start justify-start gap-1 w-full">
+                            <p class="text-base font-bold"><?= $task["count"] ?>. <?= $task["title"] ?></p>
+                            <p class="text-gray-600 text-sm"><?= $task["description"] ?></p>
                         </div>
                     </div>
-                    <div class="flex justify-end items-start w-full sm:items-center gap-4">
+                    <div class="flex justify-end items-start w-fit sm:items-center gap-4">
                         <form action="/task/upvote" method="post">
                             <button type="submit"
                                     class="flex items-center justify-center gap-1 bg-green-700 text-white rounded-full p-2  min-w-[72px]">
@@ -53,4 +54,4 @@
         <?php endif; ?>
     </section>
 </main>
-<?php require("components/footer.php"); ?>
+<?php require(basePath("internal/views/components/footer.view.php")); ?>

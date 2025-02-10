@@ -1,15 +1,19 @@
 {
-    "name": "codedusting/taskify",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Code Dusting",
-            "email": "codedusting@gmail.com"
-        }
-    ],
-    "require": {
-        "vlucas/phpdotenv": "^5.6",
-        "imagekit/imagekit": "^4.0"
+  "name": "codedusting/taskify",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Code Dusting",
+      "email": "codedusting@gmail.com"
     }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "^5.6",
+    "imagekit/imagekit": "^4.0",
+    "ext-pdo": "*",
+    "ext-pdo_pgsql": "*",
+    "php": "^8.4",
+    "ext-fileinfo": "*"
+  }
 }

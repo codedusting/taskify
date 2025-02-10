@@ -1,5 +1,6 @@
 <?php
 
+use Core\Response;
 use JetBrains\PhpStorm\NoReturn;
 
 #[NoReturn] function dd($value): void
@@ -10,10 +11,10 @@ use JetBrains\PhpStorm\NoReturn;
     die();
 }
 
-#[NoReturn] function abort($status = 404): void
+#[NoReturn] function abort($status = Response::NOT_FOUND): void
 {
     http_response_code($status);
-    require basePath("http/controllers/$status.php");
+    require basePath("internal/controllers/$status.php");
     die();
 }
 
@@ -25,11 +26,17 @@ function basePath(string $path): string
 function view(string $path, array $attributes = []): void
 {
     extract($attributes);
-    require basePath("http/views/".$path);
+    require basePath("internal/views/".$path);
 }
 
 #[NoReturn] function redirect(string $path): void
 {
     header("location: $path");
     exit();
+}
+
+function unsetPartialSessions(): void
+{
+    unset($_SESSION["_flash"]);
+    unset($_SESSION["_persist"]);
 }

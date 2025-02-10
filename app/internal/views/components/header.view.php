@@ -1,5 +1,4 @@
 <?php
-
 require basePath("libs/imagekit.php");
 $logo = $imagekit->url([
     "path" => "/php-notes-app/notes.png",
@@ -10,8 +9,9 @@ $logo = $imagekit->url([
         ]
     ]
 ]);
+$_SESSION["user"]["name"] = "Code Dusting";
 ?>
-<header class="py-4 bg-gray-900 text-white">
+<header class="py-4 bg-gray-900 text-white border-b border-solid border-b-gray-700">
     <div class="container px-4 flex items-center justify-between mx-auto">
         <div class="flex items-center justify-start">
             <div class="flex gap-1 items-center justify-start">

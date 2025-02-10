@@ -10,8 +10,12 @@ require basePath("libs/constants.php");
 
 spl_autoload_register(function ($class) {
     $classPath = explode("\\", $class);
-    $classPath[0] = strtolower($classPath[0]);
+    $count = count($classPath);
+    for ($i = 0; $i < $count - 1; $i++) {
+        $classPath[$i] = strtolower($classPath[$i]);
+    }
     $loadClass = implode("\\", $classPath);
+//    var_dump($loadClass);
     $class = str_replace("\\", DIRECTORY_SEPARATOR, $loadClass);
     require basePath("$class.php");
 });
